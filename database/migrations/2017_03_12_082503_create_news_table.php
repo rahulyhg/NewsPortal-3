@@ -23,7 +23,7 @@ class CreateNewsTable extends Migration
             $table->integer('NoiBat')->default(0);
             $table->timestamps();
             $table->integer('news_type_id')->unsigned();
-            $table->foreign('news_type_id')->references('id')->on('news_type');
+            $table->foreign('news_type_id')->references('id')->on('news_types');
         });
     }
 

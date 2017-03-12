@@ -10,7 +10,7 @@ class NewsTypeSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('news_type')->insert([
+        DB::table('news_types')->insert([
             [
                 'category_id' => '1',
                 'name' => 'Giáo Dục',

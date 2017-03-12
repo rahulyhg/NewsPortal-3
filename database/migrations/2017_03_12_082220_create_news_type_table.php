@@ -13,13 +13,13 @@ class CreateNewsTypeTable extends Migration
      */
     public function up()
     {
-        Schema::create('news_type', function (Blueprint $table) {
+        Schema::create('news_types', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
             $table->string('slug');
             $table->timestamps();
             $table->integer('category_id')->unsigned();
-            $table->foreign('category_id')->references('id')->on('category');
+            $table->foreign('category_id')->references('id')->on('categories');
         });
     }
 
@@ -30,6 +30,6 @@ class CreateNewsTypeTable extends Migration
      */
     public function down()
     {
-        Schema::drop('news_type');
+        Schema::drop('news_types');
     }
 }

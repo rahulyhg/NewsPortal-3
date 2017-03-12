@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Category extends Model
 {
 
-    protected $table = 'category';
+    protected $table = 'categories';
 
     /**
      * The attributes that are mass assignable.
