@@ -12,10 +12,10 @@
     <title>Laravel</title>
 
     <!-- styles -->
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('assets/css/app.css') }}" rel="stylesheet">
 
     <!-- scripts -->
-    <script src="{{ asset('js/app.js') }}"></script>
+    <script src="{{ asset('assets/js/app.js') }}"></script>
     <script>
         window.Laravel = {!!json_encode([
                 'csrfToken' => csrf_token(),

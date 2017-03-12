@@ -1,6 +1,6 @@
-/public/css
-/public/js
-/public/fonts
+/public/assets/css
+/public/assets/js
+/public/assets/fonts
 /.vscode
 /node_modules
 /public/storage
@@ -10,3 +10,4 @@
 /.idea
 Homestead.json
 Homestead.yaml
+public/mix-manifest.json
