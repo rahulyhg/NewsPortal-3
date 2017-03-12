@@ -4,9 +4,12 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Entities\Category;
 
 class CategoryController extends Controller
 {
+    private $index = 'admin.category.index';
+
     /**
      * Display a listing of the resource.
      *
@@ -14,7 +17,8 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        //
+        $categories = Category::all();
+        return view($this->index)->with('categories', $categories);
     }
 
     /**

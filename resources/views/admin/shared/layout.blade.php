@@ -15,13 +15,7 @@
     <link href="{{ asset('assets/css/app.css') }}" rel="stylesheet">
 
     <!-- scripts -->
-    <script src="{{ asset('assets/js/app.js') }}"></script>
-    <script>
-        window.Laravel = {!!json_encode([
-                'csrfToken' => csrf_token(),
-            ]) !!
-        };
-    </script>
+    <script src="{{ asset('assets/js/app.js') }}"></script>    
 
 </head>
 
@@ -29,12 +23,12 @@
     <div class="navbar navbar-inverse navbar-static-top">
         <div class="navbar-header">
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse">
-            <span class="sr-only">Toggle navigation</span>
+            <span class="sr-only"></span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
         </button>
-            <a class="navbar-brand" href="#"> Administrator</a>
+            <a class="navbar-brand" href="#">Administrator</a>
         </div>
     </div>
 
@@ -47,7 +41,7 @@
                 <div>
                     <div class="panel panel-info">
                         <div class="panel-heading">
-                            Title
+                            @yield('title')
                         </div>
                         <div class="panel-body">
                             @yield('content')
