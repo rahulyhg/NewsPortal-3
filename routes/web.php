@@ -10,18 +10,13 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-Route::get('/', function () {
-    
-});
-
 Auth::routes();
 
-Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function() {    
-    Route::get('/', 'HomeController@index');
+Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'as' => 'admin.'], function() {    
+    Route::name('index')->get('/', 'HomeController@index');
     Route::resource('category', CategoryController::class);
 });
 
 Route::group(['prefix' => ''], function() {
-    Route::get('/', 'HomeController@index');
+    Route::name('index')->get('/', 'HomeController@index');
 });

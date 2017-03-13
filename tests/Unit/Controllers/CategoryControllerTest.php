@@ -9,6 +9,8 @@ use App\Entities\Category;
 
 class CategoryControllerTest extends TestCase
 {    
+    use DatabaseMigrations;
+
     public function testIndex()
     {
         $categories = factory(Category::class)->create();

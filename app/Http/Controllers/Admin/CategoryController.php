@@ -2,13 +2,26 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Http\Requests\CategoryRequest;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
 use App\Entities\Category;
 
 class CategoryController extends Controller
-{
-    private $index = 'admin.category.index';
+{    
+    private $index;
+    private $create;
+
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->view = $this->view.'category.';
+        $this->index = $this->view.'index';
+        $this->create = $this->view.'create';
+    }
 
     /**
      * Display a listing of the resource.
@@ -28,18 +41,22 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        //
+        return view($this->create);
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Http\Requests\CategoryRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CategoryRequest $request)
     {
-        //
+        Category::create([
+            'name' => $request->name,
+            'slug' => str_slug($request->name)
+        ]);
+        return redirect()->route($this->create)->with('message-success', 'Successfully added.');
     }
 
     /**
@@ -67,11 +84,11 @@ class CategoryController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Http\Requests\CategoryRequest  $request
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(CategoryRequest $request, $id)
     {
         //
     }
