@@ -3,7 +3,7 @@
 @section('content')
 
 @include('shared.message-success')
-<table class="table table-striped table-responsive table-bordered">
+<table class="table table-striped table-responsive table-bordered" id="data-table">
     <thead>
         <th>No</th>
         <th>Name</th>
@@ -31,4 +31,12 @@
         @endforeach
     </tbody>
 </table>
+
+<script>
+    $(document).ready(function() {      
+        $("#data-table").DataTable({
+            responsive: true
+        });
+    });
+</script>
 @endsection

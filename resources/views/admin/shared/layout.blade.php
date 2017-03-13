@@ -19,9 +19,11 @@
 
     <!-- styles -->
     <link href="{{ asset('assets/css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('assets/css/lib.css') }}" rel="stylesheet">
 
     <!-- scripts -->
-    <script src="{{ asset('assets/js/app.js') }}"></script>    
+    <script src="{{ asset('assets/js/app.js') }}"></script>
+    <script src="{{ asset('assets/js/lib.js') }}"></script>
 
 </head>
 
@@ -50,7 +52,7 @@
                             @yield('title')
                         </div>
                         <div class="panel-body">
-                            @yield('content')                            
+                            @yield('content')                     
                         </div>
                     </div>
                 </div>
