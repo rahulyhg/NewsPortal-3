@@ -10,6 +10,7 @@ class CategoryController extends Controller
 {    
     private $index;
     private $create;
+    private $edit;
 
     /**
      * Create a new controller instance.
@@ -21,6 +22,7 @@ class CategoryController extends Controller
         $this->view = $this->view.'category.';
         $this->index = $this->view.'index';
         $this->create = $this->view.'create';
+        $this->edit = $this->view.'edit';
     }
 
     /**
@@ -67,7 +69,7 @@ class CategoryController extends Controller
      */
     public function show($id)
     {
-        //
+        
     }
 
     /**
@@ -78,7 +80,8 @@ class CategoryController extends Controller
      */
     public function edit($id)
     {
-        //
+        $category = Category::find($id);
+        return view($this->edit)->with('category' , $category);
     }
 
     /**
@@ -90,7 +93,12 @@ class CategoryController extends Controller
      */
     public function update(CategoryRequest $request, $id)
     {
-        //
+        $category = Category::find($id);
+        $category->name = $request->name;
+        $category->slug = str_slug($request->name);
+        $category->save();
+
+        return redirect()->route($this->edit, ['category' => $category])->with('message-success', 'Successfully edited.');
     }
 
     /**
@@ -101,6 +109,8 @@ class CategoryController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Category::destroy($id);
+
+        return redirect()->route($this->index)->with('message-success', 'Successfully deleted.');
     }
 }
