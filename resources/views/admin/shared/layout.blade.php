@@ -7,7 +7,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- CSRF Token -->
-    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <meta name="csrf-token" content="{{ csrf_token() }}">    
+
+    <script>
+        window.Laravel = <?php echo json_encode([
+            'csrfToken' => csrf_token(),
+        ]); ?>
+    </script>
 
     <title>Laravel</title>
 
@@ -31,7 +37,7 @@
             <a class="navbar-brand" href="#">Administrator</a>
         </div>
     </div>
-
+    
     <div class="container-fluid">
         <div class="row">
             <div class="col-sm-2 col-md-2">
@@ -44,7 +50,7 @@
                             @yield('title')
                         </div>
                         <div class="panel-body">
-                            @yield('content')
+                            @yield('content')                            
                         </div>
                     </div>
                 </div>
