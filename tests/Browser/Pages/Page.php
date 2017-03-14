@@ -15,6 +15,7 @@ abstract class Page extends BasePage
     {
         return [
             '@element' => '#selector',
+            '@search-input' => 'input[type=search]',
         ];
     }
 }

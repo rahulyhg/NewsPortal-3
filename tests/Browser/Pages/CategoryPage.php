@@ -3,9 +3,8 @@
 namespace Tests\Browser\Pages;
 
 use Laravel\Dusk\Browser;
-use Laravel\Dusk\Page as BasePage;
 
-class CategoryPage extends BasePage
+class CategoryPage extends Page
 {
     /**
      * Get the URL for the page.
@@ -35,7 +34,7 @@ class CategoryPage extends BasePage
     public function elements()
     {
         return [
-            '@categoryName' => 'input[name=name]',
+            '@category-name' => 'input[name=name]',
         ];
     }
 }

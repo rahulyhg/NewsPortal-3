@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 
-class HomeController extends Controller
+class HomeController extends AdminController
 {
     /**
      * Create a new controller instance.

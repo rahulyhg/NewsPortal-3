@@ -6,12 +6,8 @@ use App\Http\Requests\CategoryRequest;
 use Illuminate\Http\Request;
 use App\Entities\Category;
 
-class CategoryController extends Controller
-{    
-    private $index;
-    private $create;
-    private $edit;
-
+class CategoryController extends AdminController
+{
     /**
      * Create a new controller instance.
      *
@@ -19,10 +15,6 @@ class CategoryController extends Controller
      */
     public function __construct()
     {
-        $this->view = $this->view.'category.';
-        $this->index = $this->view.'index';
-        $this->create = $this->view.'create';
-        $this->edit = $this->view.'edit';
     }
 
     /**
@@ -33,7 +25,8 @@ class CategoryController extends Controller
     public function index()
     {
         $categories = Category::all();
-        return view($this->index)->with('categories', $categories);
+        $this->data['categories'] = $categories;
+        return view('admin.category.index')->with($this->data);
     }
 
     /**
@@ -43,7 +36,7 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        return view($this->create);
+        return view('admin.category.create');
     }
 
     /**
@@ -58,7 +51,8 @@ class CategoryController extends Controller
             'name' => $request->name,
             'slug' => str_slug($request->name)
         ]);
-        return redirect()->route($this->create)->with('message-success', 'Successfully added.');
+        $this->data['message-success'] = 'Successfully added.';
+        return redirect()->route('admin.category.create')->with($this->data);
     }
 
     /**
@@ -69,7 +63,6 @@ class CategoryController extends Controller
      */
     public function show($id)
     {
-        
     }
 
     /**
@@ -81,7 +74,8 @@ class CategoryController extends Controller
     public function edit($id)
     {
         $category = Category::find($id);
-        return view($this->edit)->with('category' , $category);
+        $this->data['category'] = $category;
+        return view('admin.category.edit')->with($this->data);
     }
 
     /**
@@ -97,8 +91,8 @@ class CategoryController extends Controller
         $category->name = $request->name;
         $category->slug = str_slug($request->name);
         $category->save();
-
-        return redirect()->route($this->edit, ['category' => $category])->with('message-success', 'Successfully edited.');
+        $this->data['message-success'] = 'Successfully edited.';
+        return redirect()->route('admin.category.edit', ['category' => $category])->with($this->data);
     }
 
     /**
@@ -111,7 +105,7 @@ class CategoryController extends Controller
     {
         $category = Category::find($id);
         Category::destroy($id);
-
-        return redirect()->route($this->index)->with('message-success', 'Successfully deleted '.$category->name.'.');
+        $this->data['message-success'] = 'Successfully deleted "'.$category->name.'".';
+        return redirect()->route('admin.category.index')->with($this->data);
     }
 }

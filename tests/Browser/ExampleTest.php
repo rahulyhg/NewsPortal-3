@@ -12,15 +12,16 @@ use App\Entities\Category;
 class ExampleTest extends DuskTestCase
 {
     use DatabaseMigrations;
-    
+
     public function test_visit_admin_see_home()
     {
         $this->browse(function (Browser $browser) {
             $browser->visit(new AdminPage)
+                    ->assertSee('Administrator')
                     ->assertSee('Home');
         });
     }
-   
+
     public function test_visit_admin_click_category()
     {
         $this->browse(function (Browser $browser) {
@@ -36,9 +37,19 @@ class ExampleTest extends DuskTestCase
         $this->browse(function (Browser $browser) use ($categories) {
             $browser->visit(new CategoryPage)
                     ->clickLink('Edit')
-                    ->type('@categoryName', 'Test')
-                    ->press('Edit')                
+                    ->type('@category-name', 'Test')
+                    ->press('Edit')
                     ->assertSee('Successfully edited.');
+        });
+    }
+
+    public function test_visit_category_and_search()
+    {
+        $categories = factory(Category::class, 10)->create();
+        $this->browse(function (Browser $browser) use ($categories) {
+            $browser->visit(new CategoryPage)
+                    ->type('@search-input', $categories[0]->name)
+                    ->assertSee($categories[0]->name);
         });
     }
 }
