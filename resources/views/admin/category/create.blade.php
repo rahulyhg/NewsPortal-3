@@ -12,9 +12,17 @@
             <input type="text" class="form-control" name="name" value="{{ old('name') }}">            
         </div>
         <div class="form-group">
-            <button class="btn btn-success" type="submit">Create</button>
-            <button class="btn btn-info" type="reset">Reset</button>
-            <a href="{{ route('admin.category.index') }}"><input type="button" class="btn btn-danger" value="Back to list"></a>
+            <div class="row">
+                <div class="col-sm-4">
+                    <button class="btn btn-success btn-block" type="submit">Create</button>
+                </div>
+                <div class="col-sm-4">
+                    <button class="btn btn-info btn-block" type="reset">Reset</button>
+                </div>
+                <div class="col-sm-4">
+                    <a href="{{ route('admin.category.index') }}"><input type="button" class="btn btn-danger btn-block" value="Back to list"></a>
+                </div>
+            </div>            
         </div>
     </form>
 </div>

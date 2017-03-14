@@ -51,7 +51,7 @@
                         <div class="panel-heading">
                             @yield('title')
                         </div>
-                        <div class="panel-body">
+                        <div class="panel-body" style="overflow-x: auto;">
                             @yield('content')                     
                         </div>
                     </div>
