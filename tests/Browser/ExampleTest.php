@@ -2,12 +2,12 @@
 
 namespace Tests\Browser;
 
-use Tests\DuskTestCase;
-use Laravel\Dusk\Browser;
+use App\Entities\Category;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
+use Laravel\Dusk\Browser;
 use Tests\Browser\Pages\AdminPage;
 use Tests\Browser\Pages\CategoryPage;
-use App\Entities\Category;
+use Tests\DuskTestCase;
 
 class ExampleTest extends DuskTestCase
 {
@@ -17,8 +17,8 @@ class ExampleTest extends DuskTestCase
     {
         $this->browse(function (Browser $browser) {
             $browser->visit(new AdminPage)
-                    ->assertSee('Administrator')
-                    ->assertSee('Home');
+                ->assertSee('Administrator')
+                ->assertSee('Home');
         });
     }
 
@@ -26,8 +26,8 @@ class ExampleTest extends DuskTestCase
     {
         $this->browse(function (Browser $browser) {
             $browser->visit(new AdminPage)
-                    ->clickLink('Category')
-                    ->assertSee('Category');
+                ->clickLink('Category')
+                ->assertSee('Category');
         });
     }
 
@@ -36,9 +36,9 @@ class ExampleTest extends DuskTestCase
         $categories = factory(Category::class, 10)->create();
         $this->browse(function (Browser $browser) use ($categories) {
             $browser->visit(new CategoryPage)
-                    ->editCategory('Test')
-                    ->assertInputValue('@category-name-input', 'Test')
-                    ->assertSee('Successfully edited.');
+                ->editCategory('Test')
+                ->assertInputValue('@category-name-input', 'Test')
+                ->assertSee('Successfully edited.');
         });
     }
 
@@ -47,10 +47,10 @@ class ExampleTest extends DuskTestCase
         $categories = factory(Category::class, 5)->create();
         $this->browse(function (Browser $browser) use ($categories) {
             $browser->visit(new CategoryPage)
-                    ->type('@search-input', $categories[0]->name)
-                    ->assertSee($categories[0]->id)
-                    ->assertSee($categories[0]->name)
-                    ->assertSee($categories[0]->slug);
+                ->type('@search-input', $categories[0]->name)
+                ->assertSee($categories[0]->id)
+                ->assertSee($categories[0]->name)
+                ->assertSee($categories[0]->slug);
         });
     }
 
@@ -58,9 +58,9 @@ class ExampleTest extends DuskTestCase
     {
         $this->browse(function (Browser $browser) {
             $browser->visit('/admin/category/create')
-                    ->type('@category-name-input', 'Test')
-                    ->press('Create')
-                    ->assertSee('Successfully added.');
+                ->type('@category-name-input', 'Test')
+                ->press('Create')
+                ->assertSee('Successfully added.');
         });
     }
 
@@ -69,9 +69,9 @@ class ExampleTest extends DuskTestCase
         $categories = factory(Category::class, 2)->create();
         $this->browse(function (Browser $browser) use ($categories) {
             $browser->visit(new CategoryPage)
-                    ->clickLink('Delete')
-                    ->assertSee('Successfully deleted "'.$categories[0]->name.'".')
-                    ->assertDontSeeIn('table', $categories[0]->name);
+                ->clickLink('Delete')
+                ->assertSee('Successfully deleted "' . $categories[0]->name . '".')
+                ->assertDontSeeIn('table', $categories[0]->name);
         });
     }
 }

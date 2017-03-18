@@ -4,6 +4,6 @@
             <li>
                 {{ session('message-success') }}
             </li>
-        </ul>       
+        </ul>
     </div>
 @endif

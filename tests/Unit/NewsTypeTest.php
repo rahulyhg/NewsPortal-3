@@ -2,10 +2,10 @@
 
 namespace Tests\Unit;
 
-use Tests\TestCase;
+use App\Entities\NewsType;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
-use App\Entities\NewsType;
+use Tests\TestCase;
 
 class NewsTypeTest extends TestCase
 {

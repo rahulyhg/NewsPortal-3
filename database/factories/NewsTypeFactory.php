@@ -1,7 +1,7 @@
 <?php
 
-use App\Entities\NewsType;
 use App\Entities\Category;
+use App\Entities\NewsType;
 
 $factory->define(NewsType::class, function (Faker\Generator $faker) {
     $name = $faker->unique()->name;

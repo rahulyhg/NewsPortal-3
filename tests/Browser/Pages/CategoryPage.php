@@ -41,7 +41,7 @@ class CategoryPage extends Page
     public function editCategory(Browser $browser, $name)
     {
         $browser->clickLink('Edit')
-                ->type('@category-name-input', $name)
-                ->press('Edit');
+            ->type('@category-name-input', $name)
+            ->press('Edit');
     }
 }

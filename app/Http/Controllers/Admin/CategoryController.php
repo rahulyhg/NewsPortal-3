@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Entities\Category;
 use App\Http\Requests\CategoryRequest;
 use Illuminate\Http\Request;
-use App\Entities\Category;
 
 class CategoryController extends AdminController
 {
@@ -42,7 +42,7 @@ class CategoryController extends AdminController
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\CategoryRequest  $request
+     * @param  \App\Http\Requests\CategoryRequest $request
      * @return \Illuminate\Http\Response
      */
     public function store(CategoryRequest $request)
@@ -58,7 +58,7 @@ class CategoryController extends AdminController
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -68,7 +68,7 @@ class CategoryController extends AdminController
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
@@ -81,8 +81,8 @@ class CategoryController extends AdminController
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Requests\CategoryRequest  $request
-     * @param  int  $id
+     * @param  \App\Http\Requests\CategoryRequest $request
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function update(CategoryRequest $request, $id)
@@ -98,14 +98,14 @@ class CategoryController extends AdminController
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
         $category = Category::find($id);
         Category::destroy($id);
-        $this->data['message-success'] = 'Successfully deleted "'.$category->name.'".';
+        $this->data['message-success'] = 'Successfully deleted "' . $category->name . '".';
         return redirect()->route('admin.category.index')->with($this->data);
     }
 }

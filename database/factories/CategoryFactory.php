@@ -14,7 +14,7 @@ $factory->define(Category::class, function (Faker\Generator $faker) {
 
 $factory->state(Category::class, 'relations', function (Faker\Generator $faker) {
     return [
-        'newsTypes' => function() {
+        'newsTypes' => function () {
             return factory(NewsType::class)->create();
         }
     ];

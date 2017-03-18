@@ -21,7 +21,7 @@ class NewsType extends Model
     {
         return $this->belongsTo('App\Entities\Category');
     }
-    
+
     public function newses()
     {
         return $this->hasMany('App\Entities\News');
