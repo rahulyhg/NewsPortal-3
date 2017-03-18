@@ -34,7 +34,14 @@ class CategoryPage extends Page
     public function elements()
     {
         return [
-            '@category-name' => 'input[name=name]',
+            '@category-name-input' => 'input[name=name]',
         ];
+    }
+
+    public function editCategory(Browser $browser, $name)
+    {
+        $browser->clickLink('Edit')
+                ->type('@category-name-input', $name)
+                ->press('Edit');
     }
 }

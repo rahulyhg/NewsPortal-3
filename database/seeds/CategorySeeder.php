@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use App\Entities\Category;
 
 class CategorySeeder extends Seeder
 {
@@ -11,43 +12,32 @@ class CategorySeeder extends Seeder
      */
     public function run()
     {
-        DB::table('categories')->insert([
-            [
-                'name' => 'Xã Hội',
-                'slug' => 'Xa-Hoi'
-            ],
-            [
-                'name' => 'Thế Giới',
-                'slug' => 'The-Gioi'
-            ],
-            [
-                'name' => 'Kinh Doanh',
-                'slug' => 'Kinh-Doanh'
-            ],
-            [
-                'name' => 'Văn Hoá',
-                'slug' => 'Van-Hoa'
-            ],
-            [
-                'name' => 'Thể Thao',
-                'slug' => 'The-Thao'
-            ],
-            [
-                'name' => 'Pháp Luật',
-                'slug' => 'Phap-Luat'
-            ],
-            [
-                'name' => 'Đời Sống',
-                'slug' => 'Doi-Song'
-            ],
-            [
-                'name' => 'Khoa Học',
-                'slug' => 'Khoa-Hoc'
-            ],
-            [
-                'name' => 'Vi Tính',
-                'slug' => 'Vi-Tinh'
-            ]
+        factory(Category::class)->create([
+            'name' => 'Xã Hội'
+        ]);
+        factory(Category::class)->create([
+            'name' => 'Thế Giới'
+        ]);
+        factory(Category::class)->create([
+            'name' => 'Kinh Doanh'
+        ]);
+        factory(Category::class)->create([
+            'name' => 'Văn Hoá'
+        ]);
+        factory(Category::class)->create([
+            'name' => 'Thể Thao'
+        ]);
+        factory(Category::class)->create([
+            'name' => 'Pháp Luật'
+        ]);
+        factory(Category::class)->create([
+            'name' => 'Đời Sống'
+        ]);
+        factory(Category::class)->create([
+            'name' => 'Khoa Học'
+        ]);
+        factory(Category::class)->create([
+            'name' => 'Vi Tính'
         ]);
     }
 }

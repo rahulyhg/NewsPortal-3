@@ -12,9 +12,10 @@
 */
 Auth::routes();
 
-Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'as' => 'admin.'], function() {    
+Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'as' => 'admin.'], function() {
     Route::name('index')->get('/', 'HomeController@index');
     Route::resource('category', CategoryController::class);
+    Route::resource('news-type', NewsTypeController::Class);
 });
 
 Route::group(['prefix' => ''], function() {

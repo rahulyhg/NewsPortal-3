@@ -36,20 +36,42 @@ class ExampleTest extends DuskTestCase
         $categories = factory(Category::class, 10)->create();
         $this->browse(function (Browser $browser) use ($categories) {
             $browser->visit(new CategoryPage)
-                    ->clickLink('Edit')
-                    ->type('@category-name', 'Test')
-                    ->press('Edit')
+                    ->editCategory('Test')
+                    ->assertInputValue('@category-name-input', 'Test')
                     ->assertSee('Successfully edited.');
         });
     }
 
     public function test_visit_category_and_search()
     {
-        $categories = factory(Category::class, 10)->create();
+        $categories = factory(Category::class, 5)->create();
         $this->browse(function (Browser $browser) use ($categories) {
             $browser->visit(new CategoryPage)
                     ->type('@search-input', $categories[0]->name)
-                    ->assertSee($categories[0]->name);
+                    ->assertSee($categories[0]->id)
+                    ->assertSee($categories[0]->name)
+                    ->assertSee($categories[0]->slug);
+        });
+    }
+
+    public function test_visit_category_and_create_a_category()
+    {
+        $this->browse(function (Browser $browser) {
+            $browser->visit('/admin/category/create')
+                    ->type('@category-name-input', 'Test')
+                    ->press('Create')
+                    ->assertSee('Successfully added.');
+        });
+    }
+
+    public function test_visit_category_and_delete_a_category()
+    {
+        $categories = factory(Category::class, 2)->create();
+        $this->browse(function (Browser $browser) use ($categories) {
+            $browser->visit(new CategoryPage)
+                    ->clickLink('Delete')
+                    ->assertSee('Successfully deleted "'.$categories[0]->name.'".')
+                    ->assertDontSeeIn('table', $categories[0]->name);
         });
     }
 }

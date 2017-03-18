@@ -1,6 +1,7 @@
 <?php
+use App\Entities\User;
 
-$factory->define(App\Entities\User::class, function (Faker\Generator $faker) {
+$factory->define(User::class, function (Faker\Generator $faker) {
     static $password;
 
     return [
