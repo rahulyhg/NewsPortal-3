@@ -75,7 +75,7 @@ class CategoryController extends AdminController
     {
         $category = Category::find($id);
         $this->data['category'] = $category;
-        return view('admin.category.edit')->with($this->data);
+        return view('admin.category.edit')->with('category', $category);
     }
 
     /**
