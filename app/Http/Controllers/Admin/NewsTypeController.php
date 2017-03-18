@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Entities\Category;
 use App\Entities\NewsType;
 use Illuminate\Http\Request;
 
@@ -41,7 +42,7 @@ class NewsTypeController extends AdminController
 
         ]);
         $this->data['message-success'] = 'Successfully added.';
-        return redirect()->route('admin.category.create')->with($this->data);
+        return redirect()->route('admin.news-type.create')->with($this->data);
     }
 
     /**
@@ -64,7 +65,9 @@ class NewsTypeController extends AdminController
     public function edit($id)
     {
         $newsType = NewsType::find($id);
+        $categories = Category::all();
         $this->data['newsType'] = $newsType;
+        $this->data['categories'] = $categories;
         return view('admin.news-type.edit')->with($this->data);
     }
 

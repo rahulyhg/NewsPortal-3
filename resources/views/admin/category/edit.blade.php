@@ -5,7 +5,7 @@
     <div class="col-sm-4">
         @include('shared.error')
         @include('shared.message-success')
-        <form action="{{ route('admin.category.update', $category->id) }}" method="POST" class="form-horizontal">
+        <form action="{{ route('admin.category.update', $category->id) }}" method="POST" class="">
             {{ csrf_field() }}
             <input type="hidden" name="_method" value="PUT">
             <div class="form-group">

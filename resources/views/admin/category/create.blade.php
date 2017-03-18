@@ -5,7 +5,7 @@
     <div class="col-sm-4">
         @include('shared.error')
         @include('shared.message-success')
-        <form action="{{ route('admin.category.store') }}" method="POST" class="form-horizontal">
+        <form action="{{ route('admin.category.store') }}" method="POST" class="">
             {{ csrf_field() }}
             <div class="form-group">
                 <label for="">Name:</label>

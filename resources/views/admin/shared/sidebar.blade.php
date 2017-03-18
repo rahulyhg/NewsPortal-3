@@ -19,7 +19,7 @@
                     </tr>
                     <tr>
                         <td>
-                            <a href="#">News Type</a>
+                            <a href="{{ route('admin.news-type.index') }}">News Type</a>
                         </td>
                     </tr>
                     <tr>
